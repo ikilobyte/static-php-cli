@@ -13,6 +13,14 @@
             "bzip2"
         ]
     },
+    "xdebug": {
+        "type": "external",
+        "source": "xdebug",
+        "arg-type": "custom",
+        "lib-depends": [
+            "zlib"
+        ]
+    },
     "calendar": {
         "type": "builtin"
     },

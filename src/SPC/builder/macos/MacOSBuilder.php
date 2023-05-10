@@ -208,7 +208,7 @@ class MacOSBuilder extends BuilderBase
     public function buildCli(string $extra_libs): void
     {
         shell()->cd(SOURCE_PATH . '/php-src')
-            ->exec("make -j{$this->concurrency} EXTRA_CFLAGS=\"-g -Os -fno-ident\" EXTRA_LIBS=\"{$extra_libs} -lresolv\" cli")
+            ->exec("make -j{$this->concurrency} EXTRA_CFLAGS=\"-g -Os -fno-ident -I" . SOURCE_PATH . "/php-src/ext/xdebug\" EXTRA_LIBS=\"{$extra_libs} -lresolv\" cli")
             ->exec('dsymutil -f sapi/cli/php')
             ->exec('strip sapi/cli/php');
         $this->deployBinary(BUILD_TARGET_CLI);

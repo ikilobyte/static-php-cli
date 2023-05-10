@@ -6,6 +6,16 @@
             "path": "LICENSE"
         }
     },
+    "xdebug": {
+        "type": "url",
+        "url": "http://pecl.php.net/get/xdebug",
+        "path": "php-src/ext/xdebug",
+        "filename": "xdebug.tgz",
+        "license": {
+            "type": "text",
+            "text": "TODO"
+        }
+    },
     "apcu": {
         "type": "url",
         "url": "http://pecl.php.net/get/APCu",

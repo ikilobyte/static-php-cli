@@ -48,6 +48,11 @@ class SourcePatcher
             file_put_contents(SOURCE_PATH . '/php-src/ext/curl/config.m4', $file1 . "\n" . $files . "\n" . $file2);
         }
 
+        if ($builder->getExt('xdebug')) {
+            FileSystem::replaceFile(SOURCE_PATH . '/php-src/ext/xdebug/config.m4', REPLACE_FILE_PREG, '/m4_include\(\[m4\//', 'm4_include([' . SOURCE_PATH . '/php-src/ext/xdebug/m4/');
+            FileSystem::replaceFile(SOURCE_PATH . '/php-src/ext/xdebug/config.m4', REPLACE_FILE_STR, '`${PHP_CONFIG} --version`', '$PHP_VERSION');
+        }
+
         // if ($builder->getExt('pdo_sqlite')) {
         //    FileSystem::replaceFile()
         // }
@@ -87,6 +92,9 @@ class SourcePatcher
         }
         if ($ssh2 = $builder->getExt('ssh2')) {
             $patch[] = ['ssh2 patch', '/-lssh2/', $ssh2->getLibFilesString()];
+        }
+        if ($builder->getExt('xdebug')) {
+            $patch[] = ['xdebug configure patch', '/`\$\{PHP_CONFIG\} --version`/', '$PHP_VERSION'];
         }
         $patch[] = ['disable capstone', '/have_capstone="yes"/', 'have_capstone="no"'];
         foreach ($patch as $item) {
