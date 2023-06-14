@@ -2,6 +2,7 @@
 # Start with '^' is deselecting extensions, which is not installed as default
 # Each line just leave the extension name or ^ character
 
+
 bcmath
 calendar
 ctype
