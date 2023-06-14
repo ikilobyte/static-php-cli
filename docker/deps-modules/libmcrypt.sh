@@ -25,6 +25,7 @@ function do_libmcrypt_compiler() {
     chmod a+x ./install-sh
     sh ./configure --prefix=/usr/libmcrypt \
     --enable-static=yes \
+    --build=arm-linux \
     --enable-shared=no
     make -j $cpu_nums
     echo "libmcrypt compiled!" && \
