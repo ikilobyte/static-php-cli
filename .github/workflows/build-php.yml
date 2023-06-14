@@ -24,7 +24,7 @@ jobs:
                       if [[ "${{ matrix.arch }}" = "armv7l" ]]; then
                         sed -ie 's/alpine:latest/multiarch\/alpine:armv7-latest-stable/g' Dockerfile
                       else
-                        sed -ie 's/alpine:3.16/--platform=${{ matrix.arch }} alpine:3.16/g' Dockerfile
+                        sed -ie 's/alpine:3.16/multiarch\/alpine:aarch64-edge/g' Dockerfile
                       fi
                       docker run --rm --privileged multiarch/qemu-user-static:register --reset
                     fi
