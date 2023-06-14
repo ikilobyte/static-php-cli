@@ -7,7 +7,7 @@ calendar
 ctype
 curl
 dom
-event
+^event
 exif
 fileinfo
 filter
